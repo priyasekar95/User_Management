@@ -28,7 +28,7 @@ Route::get('/', function () {
 
 //routing with query string
 Route::get('/users', function () {
-    $name=request('name');
-    $exp=request('exp');
-    return view('users',['Name'=>$name,'Exp'=>$exp]);
+    $name = request('name');
+    $exp = request('exp');
+    return view('users', ['Name' => $name, 'Exp' => $exp]);
 });
