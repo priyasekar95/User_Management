@@ -41,6 +41,6 @@ Route::get('index','PostController@index');
 Route::get('create','PostController@create');
 Route::post('store','PostController@store');
 Route::get('edit/{id}','PostController@edit');
+Route::get('show/{id}','PostController@show');
 Route::post('update','PostController@update');
-Route::get('delete','PostController@delete');
-//Route::post('create_user_thirdparty','UserController@createUserThirdparty');
+Route::delete('destroy/{id}','PostController@destroy');

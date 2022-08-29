@@ -64,8 +64,10 @@ class PostController  extends Controller{
      * @param  \App\Models\Text  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(PostModel $post)
-    {
+    public function show($id)
+    {  $post = PostModel::where('id',$id)->first();
+     
+       //dd($post);
         return view('posts.show',compact('post'));
     }
 
@@ -75,9 +77,10 @@ class PostController  extends Controller{
      * @param  \App\Models\Text  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(PostModel $post)
+    public function edit($id)
     {
-      
+        $post = PostModel::where('id',$id)->first();
+     
         return view('posts.edit',compact('post'));
     }
 
@@ -111,12 +114,16 @@ class PostController  extends Controller{
      * @param  \App\Models\Text  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PostModel $post)
+    public function destroy(PostModel $post,$id)
     {
-        $post->delete();
-    
-        return redirect()->route('posts.index')
-                        ->with('success','Post deleted successfully');
+       // dd( $post);
+       // $post->delete();
+        PostModel::destroy($id);
+    //return '/index';
+        // return redirect()->url  ('index')
+        //                 ->with('success','Post deleted successfully');
+        $data = PostModel::latest()->paginate(5);
+        return view('posts.index',compact('data'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
    
 }

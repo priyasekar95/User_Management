@@ -4,7 +4,7 @@
     <div class="row" style="margin-top: 5rem;">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Laravel 8 CRUD Example from scratch - laravelcode.com</h2>
+                <h2>Laravel 8 CRUD Example from scratch </h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ url('create') }}"> Save</a>
@@ -12,11 +12,11 @@
         </div>
     </div>
    
-    @if ($message = Session::get('success'))
+    <!-- @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
-    @endif
+    @endif -->
    
     <table class="table table-bordered">
         <tr>
@@ -38,7 +38,9 @@
                     <a class="btn btn-primary" href="{{ url('edit',$value->id) }}">Edit</a>   
                     @csrf
                     @method('DELETE')      
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you want delete ?')" href="{{ url('destroy') }}">Delete</button>
+                    <!-- <a class=" " onclick="return confirm('Are you sure?')" href="{{ url('destroy') }}"><i class="fa fa-trash"></i></a> -->
+
                 </form>
             </td>
         </tr>
