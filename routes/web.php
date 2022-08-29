@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +28,19 @@ Route::get('/', function () {
 // });
 
 //routing with query string
-Route::get('/users', function () {
-    $name = request('name');
-    $exp = request('exp');
-    return view('users', ['Name' => $name, 'Exp' => $exp]);
-});
+// Route::get('/users', function () {
+//     $name=request('name');
+//     $exp=request('exp');
+//     return view('users',['Name'=>$name,'Exp'=>$exp]);
+// });
+
+
+//Route::resource('posts', PostController::class);
+//Route::get('/posts', [App\Http\Controllers\PostController::class, 'index']);
+Route::get('index','PostController@index');
+Route::get('create','PostController@create');
+Route::post('store','PostController@store');
+Route::get('edit/{id}','PostController@edit');
+Route::post('update','PostController@update');
+Route::get('delete','PostController@delete');
+//Route::post('create_user_thirdparty','UserController@createUserThirdparty');
